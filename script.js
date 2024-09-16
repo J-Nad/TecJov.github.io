@@ -131,3 +131,33 @@ projects.forEach(project => {
         projectImage.style.transform = "scale(0.95)"; // Shrink the image
     });
 });
+// Script to dynamically update the pop-up content for each project
+document.querySelectorAll('.project').forEach(project => {
+    project.addEventListener('mouseover', function() {
+        const projectType = this.getAttribute('data-type');
+        let content;
+
+        // Check if it's embeddable or needs a screenshot fallback
+        if (projectType === 'embed') {
+            const url = this.getAttribute('data-url');
+            content = `<iframe src="${url}" width="380" height="280"></iframe>`;
+        } else if (projectType === 'screenshot') {
+            const screenshot = this.getAttribute('data-screenshot');
+            content = `<img src="${screenshot}" alt="Project Screenshot">`;
+        }
+
+        // Insert the content dynamically into the pop-up
+        this.style.setProperty('--popup-content', `"${content}"`);
+        this.querySelector('::before').innerHTML = content;
+    });
+});
+window.addEventListener('scroll', function() {
+    var scrollElement = document.querySelector('.scroll');
+    var scrollPosition = window.scrollY;
+    
+    if (scrollPosition > 100) { // Adjust this threshold as needed
+      scrollElement.style.opacity = '0';
+    } else {
+      scrollElement.style.opacity = '1';
+    }
+  });
