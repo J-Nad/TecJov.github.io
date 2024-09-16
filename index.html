@@ -6,7 +6,7 @@
     <title>Jovan's Portfolio</title>
     <link rel="stylesheet" href="style.css">
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@400;600&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -14,6 +14,7 @@
     <nav class="navbar">
         <a href="#home">Home</a>
         <a href="#projects">Projects</a>
+        <a href="#about">About</a>
         
 
             <a href="https://www.linkedin.com/in/njovan/" class = "idiot"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
@@ -31,7 +32,9 @@
             <h2>Hi I'm Jovan Nadendla!</h2>
             <br>
             <p>I'm a passionate developer and designer focused on creating intuitive, highly functional, and visually appealing digital experiences. Below are some of my relevant projects.</p>
+
         </div>
+        
     </section>
     <div class="top-black-screen"></div>
     <div class="bottom-black-screen"></div>
@@ -39,84 +42,232 @@
         <a id = "projects"></a>
             <div class="black-screen-content">
                 <style>
-                /* Import Poppins font from Google Fonts */
-                @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
-            
                 /* General Styling */
                 body {
-                    font-family: 'Poppins', sans-serif; /* Use Poppins font */
-                    background-color: #1a1a1a; /* Background of the page */
-                    color: #ffffff; /* Text color */
+                    font-family: 'Poppins', sans-serif;
+                    background-color: #f5f0f8;
+                    color: #ffffff;
+                    margin: 0;
+                    padding: 0;
+                    font-size: 16px; /* Base font size */
                 }
-            
+
                 .row {
                     display: flex;
                     justify-content: space-between;
-                    padding: 20px;
+                    padding: 1vw;
                 }
-            
+
                 /* Styling for project list and hover effect */
                 .projects-list {
                     display: flex;
                     flex-direction: column;
-                    padding-right: 40px; /* Tighten space between list and description */
-                    flex: 1;
+                    padding-right: 2vw;
+                    flex: 1 1 300px;
                 }
-            
+
                 .project {
-                    font-size: 4rem; /* Larger font size for the project names */
-                    padding: 10px;
-                    margin-bottom: 10px;
-                    text-align: left; /* Align text to the left */
-                    background-color: #f5f0f8; /* Dark background for each project item */
+                    font-size: 2vw;
+                    padding: 0.5vw;
+                    margin-bottom: 0.5vw;
+                    text-align: left;
+                    background-color: #f5f0f8;
                     transition: background-color 0.3s ease;
                 }
-            
-                .project:hover {
-                    background-color: #bda4cd; /* Change background on hover */
-                    cursor: pointer;
-                }
-            
+
                 /* Styling for project description */
                 .project-description {
-                    flex: 2;
-                    padding-left: 350px; /* Align description further to the right */
-                    text-align: left; /* Align text to the left */
+                    flex: 2 1 400px;
+                    padding-left: 2vw;
+                    text-align: left;
                 }
-            
+
                 #project-title {
-                    font-size: 1.4rem; /* Font size for project title */
+                    font-size: 1.4vw;
                     font-weight: 700;
-                    margin-bottom: 50px;
+                    margin-bottom: 1.5vw;
                 }
-            
+
                 #project-info {
-                    font-size: 1rem; /* Font size for project info */
+                    font-size: 1vw;
                     font-weight: 300;
                     line-height: 1.8;
+                }
+
+                /* Styles for project pop-ups and general layout */
+                .popup {
+                    position: absolute;
+                    top: 0;
+                    right: calc(100% + 15px);
+                    width: 30vw;
+                    height: 22.5vw; /* Maintain 4:3 aspect ratio */
+                    padding: 0.5vw;
+                    border-radius: 8px;
+                    opacity: 0;
+                    transform: scale(0);
+                    transform-origin: right center;
+                    transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+                    pointer-events: none;
+                }
+
+                .popup iframe, .popup img {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 8px;
+                    border: none;
+                }
+
+                /* Media Queries for scaling */
+                @media (max-width: 1200px) {
+                    body { font-size: 14px; }
+                    .project { font-size: 2.5vw; }
+                    #project-title { font-size: 1.8vw; }
+                    #project-info { font-size: 1.3vw; }
+                }
+
+                @media (max-width: 768px) {
+                    body { font-size: 12px; }
+                    .project { font-size: 3vw; }
+                    #project-title { font-size: 2.2vw; }
+                    #project-info { font-size: 1.6vw; }
+                    .popup {
+                        width: 40vw;
+                        height: 30vw;
+                    }
+                }
+
+                @media (max-width: 480px) {
+                    body { font-size: 10px; }
+                    .project { font-size: 4vw; }
+                    #project-title { font-size: 3vw; }
+                    #project-info { font-size: 2.2vw; }
+                    .popup {
+                        width: 50vw;
+                        height: 37.5vw;
+                    }
                 }
                 </style>
             
                 <div class="row">
+                    <style>
+                            /* Styles for project pop-ups and general layout */
+                            .projects-list {
+                                position: relative;
+                            }
+
+                            .project {
+                                position: relative;
+                                display: inline-block;
+                                margin: 20px;
+                                font-size: 1.2rem;
+                                color: #000;
+                                transition: color 0.3s ease-in-out;
+                                cursor: pointer;
+                            }
+
+                            /* Pop-up container */
+                            .popup {
+                                position: absolute;
+                                top: 0;
+                                right: calc(100% + 15px); /* Ensure space between the left side of the screen and the iframe */
+                                width: 400px;
+                                height: 300px;
+                                padding: 15px;
+                                border-radius: 8px;
+                                opacity: 0;
+                                transform: scale(0);
+                                transform-origin: right center;
+                                transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+                                pointer-events: none;
+                            }
+
+                            /* Show popup when hovering over project */
+                            .project:hover .popup {
+                                transform: scale(1);
+                                opacity: 1;
+                                pointer-events: auto;
+                                margin-left: -20px; /* Moves iframe 10px to the left */
+                                margin-top: -10px;  /* Moves iframe 10px higher */
+                                border: none;
+
+                            }
+
+
+                            /* Embedded iframe inside pop-up for embeddable projects */
+                            .popup iframe {
+                                width: 100%;
+                                height: 100%;
+                                border-radius: 8px;
+                                border: none;
+                                margin-left: -20px; /* Moves iframe 10px to the left */
+                                margin-top: -10px;  /* Moves iframe 10px higher */
+                                
+                            }
+
+                            /* Screenshot fallback for projects without iframe support */
+                            .popup img {
+                                width: 105%;
+                                height: 85%;
+                                border-radius: 8px;
+                                border: 1px solid #ccc;
+                                border: none;
+                                margin-left: -20px; /* Moves iframe 10px to the left */
+                                margin-top: -10px;  /* Moves iframe 10px higher */
+
+                            }
+                            
+
+                            /* Media query to ensure the pop-up doesn't go off the screen */
+                            @media (max-width: 600px) {
+                                .popup {
+                                    right: auto;
+                                    left: 0; /* Move the pop-up to align with the left side of the screen if space is limited */
+                                    width: 100vw; /* Make the pop-up take full screen width if necessary */
+                                    height: auto; /* Adjust height dynamically */
+                                    border: none;
+                                    margin-left: -20px; /* Moves iframe 10px to the left */
+                                margin-top: -10px;  /* Moves iframe 10px higher */
+
+                                }
+                            }
+
+
+
+                    </style>
                 <!-- Project List -->
-                <div class="projects-list" >
-                    <a href="https://teksat.org/boreaus/" style="text-decoration:none">
-                        <p class="project" data-project="1">Boreaus</p>
-
+                <div class="projects-list">
+                    <!-- Website that supports iframe embedding -->
+                    <a href="https://teksat.org/boreaus/" style="text-decoration:none" target="_blank">
+                        <p class="project" data-project="1">
+                            Boreaus
+                            <span class="popup" >
+                                <iframe src="https://teksat.org/boreaus/" width="380" height="280"></iframe>
+                            </span>
+                        </p>
                     </a>
-                    <a href="https://teksat.org/sat-bank-questions/" style="text-decoration:none">
-                        <p class="project" data-project="2">SAT-Q</p>
-
+            
+                    <!-- Another embeddable website -->
+                    <a href="https://teksat.org/sat-bank-questions/" style="text-decoration:none" target="_blank">
+                        <p class="project" data-project="2">
+                            SAT-Q
+                            <span class="popup">
+                                <img src="satqu.png" width="500" height="280" alt="Project Screenshot">
+                            </span>
+                        </p>
                     </a>
-
-                    <a href="https://github.com/TecJov/Guess-the-Grid/" style="text-decoration:none">
-                        <p class="project" data-project="3">Grid Game</p>
-
+            
+                    <!-- GitHub project with a screenshot fallback -->
+                    <a href="https://github.com/TecJov/Guess-the-Grid/" style="text-decoration:none" target="_blank">
+                        <p class="project" data-project="3">
+                            Grid Game
+                            <span class="popup">
+                                <style>
+                                
+                                </style>
+                                <img src="wordIMG.png" width="150" height="280" alt="Project Screenshot">
+                            </span>
+                        </p>
                     </a>
-                    
-                    
-                    
-                    
                 </div>
             
                 <!-- Project Description -->
