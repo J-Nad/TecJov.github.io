@@ -10,7 +10,6 @@
 </head>
 <body>
 
-    <!-- Updated Floating NavBar (Not Centered) -->
     <nav class="navbar">
         <a href="#home">Home</a>
         <a href="#projects">Projects</a>
@@ -26,7 +25,6 @@
         
     </nav>
 
-    <!-- Hero Section -->
     <section id="home" class="hero-section">
         <div class="hero-content">
             <h2>Hi I'm Jovan Nadendla!</h2>
@@ -42,14 +40,13 @@
         <a id = "projects"></a>
             <div class="black-screen-content">
                 <style>
-                /* General Styling */
                 body {
                     font-family: 'Poppins', sans-serif;
                     background-color: #f5f0f8;
                     color: #ffffff;
                     margin: 0;
                     padding: 0;
-                    font-size: 16px; /* Base font size */
+                    font-size: 16px; 
                 }
 
                 .row {
@@ -58,7 +55,6 @@
                     padding: 1vw;
                 }
 
-                /* Styling for project list and hover effect */
                 .projects-list {
                     display: flex;
                     flex-direction: column;
@@ -75,7 +71,6 @@
                     transition: background-color 0.3s ease;
                 }
 
-                /* Styling for project description */
                 .project-description {
                     flex: 2 1 400px;
                     padding-left: 2vw;
@@ -94,13 +89,12 @@
                     line-height: 1.8;
                 }
 
-                /* Styles for project pop-ups and general layout */
                 .popup {
                     position: absolute;
                     top: 0;
                     right: calc(100% + 15px);
                     width: 30vw;
-                    height: 22.5vw; /* Maintain 4:3 aspect ratio */
+                    height: 22.5vw; 
                     padding: 0.5vw;
                     border-radius: 8px;
                     opacity: 0;
@@ -117,7 +111,6 @@
                     border: none;
                 }
 
-                /* Media Queries for scaling */
                 @media (max-width: 1200px) {
                     body { font-size: 14px; }
                     .project { font-size: 2.5vw; }
@@ -150,7 +143,6 @@
             
                 <div class="row">
                     <style>
-                            /* Styles for project pop-ups and general layout */
                             .projects-list {
                                 position: relative;
                             }
@@ -165,11 +157,10 @@
                                 cursor: pointer;
                             }
 
-                            /* Pop-up container */
                             .popup {
                                 position: absolute;
                                 top: 0;
-                                right: calc(100% + 15px); /* Ensure space between the left side of the screen and the iframe */
+                                right: calc(100% + 15px); 
                                 width: 400px;
                                 height: 300px;
                                 padding: 15px;
@@ -181,53 +172,48 @@
                                 pointer-events: none;
                             }
 
-                            /* Show popup when hovering over project */
                             .project:hover .popup {
                                 transform: scale(1);
                                 opacity: 1;
                                 pointer-events: auto;
-                                margin-left: -20px; /* Moves iframe 10px to the left */
-                                margin-top: -10px;  /* Moves iframe 10px higher */
+                                margin-left: -20px; 
+                                margin-top: -10px; 
                                 border: none;
 
                             }
 
 
-                            /* Embedded iframe inside pop-up for embeddable projects */
                             .popup iframe {
                                 width: 100%;
                                 height: 100%;
                                 border-radius: 8px;
                                 border: none;
-                                margin-left: -20px; /* Moves iframe 10px to the left */
-                                margin-top: -10px;  /* Moves iframe 10px higher */
+                                margin-left: -20px;
+                                margin-top: -10px; 
                                 
                             }
 
-                            /* Screenshot fallback for projects without iframe support */
                             .popup img {
                                 width: 105%;
                                 height: 85%;
                                 border-radius: 8px;
                                 border: 1px solid #ccc;
                                 border: none;
-                                margin-left: -20px; /* Moves iframe 10px to the left */
-                                margin-top: -10px;  /* Moves iframe 10px higher */
+                                margin-left: -20px; 
+                                margin-top: -10px;  
 
                             }
                             
 
-                            /* Media query to ensure the pop-up doesn't go off the screen */
                             @media (max-width: 600px) {
                                 .popup {
                                     right: auto;
-                                    left: 0; /* Move the pop-up to align with the left side of the screen if space is limited */
-                                    width: 100vw; /* Make the pop-up take full screen width if necessary */
-                                    height: auto; /* Adjust height dynamically */
+                                    left: 0; 
+                                    width: 100vw; 
+                                    height: auto; 
                                     border: none;
-                                    margin-left: -20px; /* Moves iframe 10px to the left */
-                                margin-top: -10px;  /* Moves iframe 10px higher */
-
+                                    margin-left: -20px;
+                                margin-top: -10px; 
                                 }
                             }
 
